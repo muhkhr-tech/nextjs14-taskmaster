@@ -7,6 +7,5 @@ export async function GET(request: Request) {
 
   // const resp = await db.update(todos).set({ createdAt: date }).where(lt(todos.id, 100))
 
-  // return new Response(JSON.stringify(resp))
-  console.log('ok')
+  return new Response('ok')
 }
