@@ -13,7 +13,7 @@ export default async function DoingPage() {
       <div className="flex justify-between bg-yellow-400 p-3">
         <h1 className="text-center mb-0 mt-1">DOING</h1>
       </div>
-      <div className="p-3 text-xs">
+      <div className="p-3 text-xs sm:text-sm">
         {data.map((item: any, index: any) => (
           <div key={index} className="mb-1">
             <div className="flex justify-between items-center">

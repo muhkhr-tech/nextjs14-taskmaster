@@ -11,7 +11,7 @@ export default async function TodosPage() {
         <h1 className="text-center text-white mb-0 mt-1">TODO</h1>
         <AddTodo />
       </div>
-      <div className="p-3 text-xs">
+      <div className="p-3 text-xs sm:text-sm">
         {data.map((item: any, index: any) => (
           <div key={index} className="mb-1">
             <ol>
