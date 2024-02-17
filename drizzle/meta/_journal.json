@@ -1,0 +1,48 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1706503217950,
+      "tag": "0000_cynical_kinsey_walden",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1706505128308,
+      "tag": "0001_tidy_human_robot",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708122292995,
+      "tag": "0002_strong_old_lace",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1708122760260,
+      "tag": "0003_tense_red_ghost",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1708130074375,
+      "tag": "0004_far_may_parker",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1708130419991,
+      "tag": "0005_clean_magus",
+      "breakpoints": true
+    }
+  ]
+}
