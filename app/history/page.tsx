@@ -3,6 +3,8 @@ import { todos } from "@/db/schema"
 import { desc, sql } from "drizzle-orm"
 import { HiOutlineCheckCircle, HiOutlineExclamationTriangle } from "react-icons/hi2"
 
+export const dynamic = 'force-dynamic'
+
 export default async function HistoryPage() {
   // const data = await db.select({
   //   createdAt: todos.createdAt,

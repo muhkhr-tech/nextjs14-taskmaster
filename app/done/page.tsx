@@ -3,6 +3,8 @@ import { db } from "@/db";
 import { todos } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 
+export const dynamic = 'force-dynamic'
+
 export default async function DonePage() {
   const today = new Date().setHours(0, 0, 0, 0)
   const data = await db.select().from(todos).where(eq(todos.status, 'done'))
