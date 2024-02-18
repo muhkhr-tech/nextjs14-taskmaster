@@ -1,6 +1,6 @@
 'use client'
 
-import SetToDo from "@/app/doing/setToDo"
+import SetToDo from "@/app/doing/action/setToDo"
 import { useState } from "react"
 import { HiOutlineArrowLeft } from "react-icons/hi2"
 

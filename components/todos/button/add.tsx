@@ -1,10 +1,9 @@
 'use client'
 
+import AddTodo from "@/app/todos/action/add"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
-import AddAction from "./addAction"
 
-export default function AddTodo({ itemTypes }: any) {
+export default function AddTodoButton({ itemTypes }: any) {
   const [modal, setModal] = useState(false)
   const [isLoading, setLoading] = useState(false)
   const [title, setTitle] = useState('')
@@ -23,7 +22,7 @@ export default function AddTodo({ itemTypes }: any) {
     setLoading(true)
 
     try {
-      await AddAction(title)
+      await AddTodo(title)
       setModal(false)
       setTitle('')
 
@@ -36,7 +35,7 @@ export default function AddTodo({ itemTypes }: any) {
 
   return (
     <div>
-      
+
       <button className="btn btn-sm text-white btn-success" onClick={handleChange}>
         Add
       </button>

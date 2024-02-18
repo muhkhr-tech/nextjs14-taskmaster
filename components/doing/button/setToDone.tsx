@@ -1,6 +1,6 @@
 'use client'
 
-import SetToDone from "@/app/doing/setToDone"
+import SetToDone from "@/app/doing/action/setToDone"
 import { useState } from "react"
 import { HiOutlineArrowRight } from "react-icons/hi2"
 

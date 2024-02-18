@@ -6,7 +6,7 @@ import { and, eq } from "drizzle-orm";
 
 export default async function DoingPage() {
   const today = new Date().setHours(0, 0, 0, 0)
-  const data = await db.select().from(todos).where(and(eq(todos.status, 'doing'), eq(todos.createdAt, today)))
+  const data = await db.select().from(todos).where(eq(todos.status, 'doing'))
 
   return (
     <div className="sm:border border-yellow-400">

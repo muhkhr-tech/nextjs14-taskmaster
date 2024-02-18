@@ -1,6 +1,6 @@
-import AddTodo from "./add";
-import GetTodos from "@/components/getTodos";
+import GetTodos from "@/app/todos/action/getTodos";
 import SetToDoingButton from "@/components/todos/button/setToDoing";
+import AddTodoButton from "../../components/todos/button/add";
 
 export default async function TodosPage() {
   const data = await GetTodos()
@@ -9,7 +9,7 @@ export default async function TodosPage() {
     <div className="sm:border border-purple-700">
       <div className="flex justify-between bg-purple-700 p-3">
         <h1 className="text-center text-white mb-0 mt-1">TODO</h1>
-        <AddTodo />
+        <AddTodoButton />
       </div>
       <div className="p-3 text-xs sm:text-sm">
         {data.map((item: any, index: any) => (

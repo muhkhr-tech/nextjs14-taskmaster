@@ -1,19 +1,18 @@
+import { sql } from 'drizzle-orm';
 import {
-    bigint,
-    boolean,
-    date,
-    integer,
-    pgTable,
-    primaryKey,
-    serial,
-    text,
-    timestamp,
-    uniqueIndex,
-  } from 'drizzle-orm/pg-core';
+  bigint,
+  date,
+  integer,
+  pgTable,
+  primaryKey,
+  serial,
+  text,
+  timestamp,
+} from 'drizzle-orm/pg-core';
+import knex from 'knex';
 
 export const todos = pgTable('todos', {
-    id: serial('id').primaryKey(),
-    title: text('title').notNull(),
-    status: text('status').notNull(),
-    createdAt: integer('created_at').default(new Date().setHours(0, 0, 0, 0))
+  id: serial('id').primaryKey(),
+  title: text('title').notNull(),
+  status: text('status').notNull()
 })
