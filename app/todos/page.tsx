@@ -2,6 +2,8 @@ import GetTodos from "@/app/todos/action/getTodos";
 import SetToDoingButton from "@/components/todos/button/setToDoing";
 import AddTodoButton from "../../components/todos/button/add";
 
+export const dynamic = 'force-dynamic'
+
 export default async function TodosPage() {
   const data = await GetTodos()
 
