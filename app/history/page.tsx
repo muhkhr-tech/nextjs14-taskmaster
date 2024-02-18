@@ -42,6 +42,7 @@ export default async function HistoryPage() {
                 <p className={`${row.status != 'done' ? 'text-red-500': 'text-success line-through'}`}>{idx + 1}. {row.title}</p>
               </div>
             ))} */}
+            {item.title}
           </div>
         ))}
       </div>
