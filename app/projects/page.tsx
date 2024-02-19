@@ -5,7 +5,7 @@ import ProjectDetailButton from "@/components/projects/button/detail";
 
 export const dynamic = 'force-dynamic'
 
-export default async function ProjectsPage(request: Request) {
+export default async function ProjectsPage() {
   const data = await GetProjects()
 
   return (
