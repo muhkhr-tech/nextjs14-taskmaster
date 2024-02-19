@@ -15,6 +15,34 @@
       "when": 1708241534222,
       "tag": "0001_mysterious_puppet_master",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708259904279,
+      "tag": "0002_dry_terrax",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1708261553016,
+      "tag": "0003_wild_penance",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1708261780958,
+      "tag": "0004_panoramic_warbound",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1708266133862,
+      "tag": "0005_sticky_sinister_six",
+      "breakpoints": true
     }
   ]
 }

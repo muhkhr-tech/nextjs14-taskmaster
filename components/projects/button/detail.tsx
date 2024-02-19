@@ -1,15 +1,17 @@
 'use client'
 
+import GetTodos from "@/app/projects/action/getTodos"
 import AddTodo from "@/app/todos/action/add"
-import { ReactEventHandler, useState } from "react"
+import { useState } from "react"
+import SetToDoingButton from "./setToDoing"
 
-export default function AddTodoButton(projectId: any) {
+export default function ProjectDetailButton(projectId: any) {
   const [modal, setModal] = useState(false)
   const [isLoading, setLoading] = useState(false)
   const [title, setTitle] = useState('')
   const [tempData, setTempData] = useState<string[]>([])
 
-  const handleChange = (e: any) => {
+  const handleChange = async (e: any) => {
     setModal(!modal)
 
     if (modal) {
@@ -42,7 +44,6 @@ export default function AddTodoButton(projectId: any) {
 
     try {
       await AddTodo(projectId, tempData)
-      setModal(false)
       setTitle('')
 
     } catch (err) {
@@ -55,8 +56,8 @@ export default function AddTodoButton(projectId: any) {
   return (
     <div>
 
-      <button className="btn btn-sm text-white btn-success" onClick={handleChange}>
-        Add
+      <button className="btn btn-sm text-white btn-info" onClick={handleChange}>
+        Detail
       </button>
 
       <input
@@ -67,11 +68,11 @@ export default function AddTodoButton(projectId: any) {
       />
 
       <div className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg border-b-2 pb-2">Add Todo</h3>
+        <div className="modal-box w-screen max-w-full h-screen max-h-full rounded-none">
+          <h3 className="font-bold text-lg border-b-2 pb-2">Todo List</h3>
           <form onSubmit={handleForm}>
-            <div className="flex items-end justify-between">
-              <div className="form-control">
+            <div className="flex items-end justify-between space-x-2">
+              <div className="form-control w-full">
                 <div className="label">
                   <span className="label-text">Title</span>
                 </div>
@@ -90,7 +91,6 @@ export default function AddTodoButton(projectId: any) {
               </div>
             </div>
           </form>
-
           <div>
             {tempData.map((item, index) => (
               <div key={index} className="flex justify-between">
@@ -115,7 +115,6 @@ export default function AddTodoButton(projectId: any) {
               </button>
             )}
           </div>
-
         </div>
       </div>
     </div>

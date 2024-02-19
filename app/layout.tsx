@@ -12,8 +12,8 @@ const roboto = Roboto({
 
 
 export const metadata: Metadata = {
-  title: "Todo List APP",
-  description: "todo list",
+  title: "TaskMaster APP",
+  description: "task master app",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
         <div className="">
           <NavbarBottomSection />
           <NavbarTopSection/>
-          <div className="sm:w-2/5 max-w-full mx-auto justify-center">{children}</div>
+          <div className="sm:w-4/5 max-w-full mx-auto justify-center">{children}</div>
         </div>
       </body>
     </html>
