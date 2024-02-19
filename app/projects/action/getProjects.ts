@@ -5,11 +5,11 @@ import { projects } from "@/db/schema";
 import { desc, eq } from "drizzle-orm";
 
 export default async function GetProjects(status: any, limit: any) {
-  let data = []
-  
+  let data = await db.select().from(projects).orderBy(desc(projects.createdAt))
+
   if (status === '') {
     data = await db.select().from(projects).orderBy(desc(projects.createdAt))
-  } else {
+  } else if (status != '') {
     if (limit) {
       data = await db.select().from(projects).where(eq(projects.status, status)).limit(limit).orderBy(desc(projects.createdAt))
     } else {

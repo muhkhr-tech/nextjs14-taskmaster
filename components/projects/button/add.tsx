@@ -1,7 +1,7 @@
 'use client'
 
 import AddProject from "@/app/projects/action/add"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 export default function AddProjectButton() {
@@ -13,6 +13,7 @@ export default function AddProjectButton() {
     dueDate: ''
   })
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   const handleChange = (e: any) => {
     setModal(!modal)
@@ -46,8 +47,12 @@ export default function AddProjectButton() {
         description: '',
         dueDate: ''
       })
-
-      router.refresh()
+      
+      if (searchParams.get('status') != '') {
+        router.push('/projects?status=')
+      } else {
+        router.push('/projects?status=do')
+      }
 
     } catch (err) {
       console.log(err)

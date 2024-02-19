@@ -3,8 +3,6 @@
 import GetProjects from "@/app/projects/action/getProjects"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import AddTodosProjectButton from "./button/addTodos"
-import ProjectDetailButton from "./button/detail"
 import LoadingSkeleton from "./loadingSkeleton"
 import Card from "./card"
 
