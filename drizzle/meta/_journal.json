@@ -43,6 +43,13 @@
       "when": 1708266133862,
       "tag": "0005_sticky_sinister_six",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1708325396214,
+      "tag": "0006_dusty_silver_centurion",
+      "breakpoints": true
     }
   ]
 }

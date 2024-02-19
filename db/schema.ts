@@ -16,6 +16,9 @@ export const projects = pgTable('projects', {
   title: varchar('title').notNull().unique(),
   status: text('status'),
   description: text('description'),
+  totalTodos: integer('total_todos').notNull().default(0),
+  totalTodosInprogress: integer('total_todos_inprogress').notNull().default(0),
+  totalTodosCompleted: integer('total_todos_completed').notNull().default(0),
   dueDate: date('due_date').notNull(),
   createdAt: timestamp('created_at').defaultNow()
 })

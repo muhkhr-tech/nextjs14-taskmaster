@@ -2,9 +2,9 @@
 
 import { db } from "@/db";
 import { todos } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { asc, eq } from "drizzle-orm";
 
-export default async function GetTodos({projectId}: any) {
-  const data = await db.select().from(todos).where(eq(todos.projectId, projectId))
+export default async function GetTodos(projectId: any) {
+  const data = await db.select().from(todos).where(eq(todos.projectId, projectId)).orderBy(asc(todos.title))
   return data
 }

@@ -1,16 +1,21 @@
 'use client'
 
+import GetTodos from "@/app/projects/action/getTodos"
 import SetToDoing from "@/app/todos/action/setToDoing"
 import { useState } from "react"
 import { HiOutlineArrowLongRight } from "react-icons/hi2"
 
-export default function SetToDoingButton({ todoId }: any) {
+export default function SetToDoingButton({ todoId, status, projectId, onStateChange}: any) {
+  const [updatedStatus, setUpdatedStatus] = useState(status)
   const [isLoading, setLoading] = useState(false)
 
   const handleClick = async () => {
     setLoading(true)
     try {
-      await SetToDoing(todoId)
+      const todoStatus = await SetToDoing(todoId, projectId)
+      setUpdatedStatus(todoStatus)
+      const updatedTodos = await GetTodos(projectId)
+      onStateChange(updatedTodos)
     } catch (err) { console.log(err) }
     finally {
       setLoading(false)
@@ -21,9 +26,9 @@ export default function SetToDoingButton({ todoId }: any) {
     <>
       <button
         onClick={handleClick}
-        disabled={isLoading}
-        className="btn btn-xs btn-warning">
-        Doing {isLoading ? <span className="loading"></span> : <HiOutlineArrowLongRight />}
+        disabled={isLoading || status==='doing'}
+        className="btn btn-xs disabled:bg-warning disabled:text-white">
+        {isLoading ? <span className="loading"></span> : 'Doing'}
       </button>
     </>
   )

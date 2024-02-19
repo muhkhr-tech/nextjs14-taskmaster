@@ -2,55 +2,35 @@
 
 import GetTodos from "@/app/projects/action/getTodos"
 import AddTodo from "@/app/todos/action/add"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { HiOutlineXCircle } from "react-icons/hi2"
+import { HiOutlineX } from "react-icons/hi"
+import SetToDoButton from "@/components/doing/button/setToDo"
+import SetToDoneButton from "@/components/doing/button/setToDone"
 import SetToDoingButton from "./setToDoing"
 
-export default function ProjectDetailButton(projectId: any) {
+export default function ProjectDetailButton({ projectId }: any) {
   const [modal, setModal] = useState(false)
   const [isLoading, setLoading] = useState(false)
-  const [title, setTitle] = useState('')
-  const [tempData, setTempData] = useState<string[]>([])
+  const [todos, setTodos] = useState([])
 
   const handleChange = async (e: any) => {
     setModal(!modal)
 
     if (modal) {
-      setTitle('')
-      setTempData([])
-    }
-  }
-
-  const handleRemoveButton = (e: any) => {
-    setTempData((prevData) => {
-      let updateTempData = [...prevData]
-      updateTempData = updateTempData.filter((title) => title != e.target.value)
-      return updateTempData
-    })
-  }
-
-  const handleForm = async (e: any) => {
-    e.preventDefault()
-
-    if (!tempData.includes(title)) {
+      setTodos([])
+    } else {
       setLoading(true)
-      setTempData(prevData => [...prevData, title])
-      setLoading(false)
+      try {
+        const data: any = await GetTodos(projectId)
+        setTodos(data)
+        setLoading(false)
+      } catch (err) { console.log(err) }
     }
   }
 
-  const handleSaveButton = async (e: any) => {
-
-    setLoading(true)
-
-    try {
-      await AddTodo(projectId, tempData)
-      setTitle('')
-
-    } catch (err) {
-      console.log(err)
-    } finally {
-      setLoading(false)
-    }
+  const handleChildStateChange = (todos: any) => {
+    setTodos(todos)
   }
 
   return (
@@ -68,53 +48,25 @@ export default function ProjectDetailButton(projectId: any) {
       />
 
       <div className="modal">
-        <div className="modal-box w-screen max-w-full h-screen max-h-full rounded-none">
-          <h3 className="font-bold text-lg border-b-2 pb-2">Todo List</h3>
-          <form onSubmit={handleForm}>
-            <div className="flex items-end justify-between space-x-2">
-              <div className="form-control w-full">
-                <div className="label">
-                  <span className="label-text">Title</span>
+        <div className="modal-box w-1/2 max-w-full">
+          <div className="flex justify-between items-center w-full mb-3">
+            <h3 className="font-bold text-lg">Todo List</h3>
+            <button onClick={handleChange}><HiOutlineX size={25} /></button>
+          </div>
+          {isLoading ? <span className="loading"></span>
+            : <div>
+              {todos.length > 0 ? <div>{todos.map((todo: any, index) => (
+                <div key={index} className="flex justify-between space-y-1">
+                  <p>{todo.title}</p>
+                  <div className="flex space-x-1">
+                    <SetToDoButton todoId={todo.id} status={todo.status} projectId={projectId} onStateChange={handleChildStateChange} />
+                    <SetToDoingButton todoId={todo.id} status={todo.status} projectId={projectId} onStateChange={handleChildStateChange} />
+                    <SetToDoneButton todoId={todo.id} status={todo.status} projectId={projectId} onStateChange={handleChildStateChange} />
+                  </div>
                 </div>
-                <input
-                  type="text"
-                  name="title"
-                  value={title}
-                  required={true}
-                  onChange={(e) => setTitle(e.target.value)}
-                  className="input input-sm w-full input-bordered"
-                  placeholder="Baca buku"
-                />
-              </div>
-              <div>
-                <button type="submit" className="btn btn-sm btn-success text-white">+</button>
-              </div>
-            </div>
-          </form>
-          <div>
-            {tempData.map((item, index) => (
-              <div key={index} className="flex justify-between">
-                <p>{item}</p>
-                <button value={item} onClick={handleRemoveButton}>x</button>
-              </div>
-            ))}
-          </div>
-
-          <div className="modal-action">
-            {!isLoading ? (
-              <div>
-                <button type="button" className="btn btn-sm me-1" onClick={handleChange}>
-                  Cancel
-                </button>
-                <button type="submit" onClick={handleSaveButton} className="btn btn-sm btn-primary">
-                  Save
-                </button>
-              </div>
-            ) : (
-              <button type="button" className="btn btn-sm loading">
-              </button>
-            )}
-          </div>
+              ))}</div>
+                : <div>No todos found</div>}
+            </div>}
         </div>
       </div>
     </div>
