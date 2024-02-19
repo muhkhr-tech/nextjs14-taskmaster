@@ -1,6 +1,6 @@
 'use client'
 
-import AddTodo from "@/app/todos/action/add"
+import AddTodo from "@/app/projects/action/addTodo"
 import { ReactEventHandler, useState } from "react"
 
 export default function AddTodoButton(projectId: any) {

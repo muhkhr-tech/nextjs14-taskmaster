@@ -1,6 +1,6 @@
 'use client'
 
-import AddTodo from "@/app/todos/action/add"
+import AddTodo from "@/app/projects/action/addTodo"
 import { useState } from "react"
 import { BsDot } from "react-icons/bs"
 

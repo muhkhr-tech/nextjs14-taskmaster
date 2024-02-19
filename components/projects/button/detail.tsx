@@ -1,9 +1,7 @@
 'use client'
 
 import GetTodos from "@/app/projects/action/getTodos"
-import AddTodo from "@/app/todos/action/add"
-import { useEffect, useState } from "react"
-import { HiOutlineXCircle } from "react-icons/hi2"
+import { useState } from "react"
 import { HiOutlineX } from "react-icons/hi"
 import SetToDoButton from "@/components/doing/button/setToDo"
 import SetToDoneButton from "@/components/doing/button/setToDone"
